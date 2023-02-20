@@ -6,7 +6,7 @@ export default component$(() => {
     <>
       <main>
         <Header />
-        <section style="height: 80vh;">
+        <section style="height: 80vh;display:flex; flex-direction:column">
           <Slot />
         </section>
       </main>
