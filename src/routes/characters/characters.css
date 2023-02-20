@@ -1,0 +1,11 @@
+.contenedor {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.pagination {
+    position: relative;
+    right: 0px;
+}

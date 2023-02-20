@@ -1,0 +1,18 @@
+.caja {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.caja a {
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+    max-width: clamp(100px, 20vw, 200px);
+    text-align: center;
+}
+
+.caja img {
+    border-radius: 25%;
+    max-width: 200px;
+}
