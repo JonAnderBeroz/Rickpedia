@@ -1,0 +1,20 @@
+
+
+
+.characters {
+    background-color: var(--main-bg-color);
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(clamp(150px, 10vw, 200px), 1fr));
+    gap: 1em;
+    overflow: auto;
+    flex: 1 1 auto;
+}
+
+.pagination {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 1em;
+    padding: 1em;
+    height: 5%;
+}

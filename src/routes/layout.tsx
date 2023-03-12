@@ -6,15 +6,10 @@ export default component$(() => {
     <>
       <main>
         <Header />
-        <section style="height: 80vh;display:flex; flex-direction:column">
+        <section style="height: 80vh;display:flex; flex-direction:column; padding: 2em 2em 0em;">
           <Slot />
         </section>
       </main>
-      <footer>
-        <a href="https://www.builder.io/" target="_blank">
-          Made with ♡ by Builder.io
-        </a>
-      </footer>
     </>
   );
 });
