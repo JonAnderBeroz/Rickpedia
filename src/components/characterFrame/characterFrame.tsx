@@ -5,7 +5,7 @@ export const CharacterFrame = component$((props: { name: string, image: string }
     return (
         <div class="caja">
             <img src={props.image} />
-            <a href="">{props.name}</a>
+            <a href="/character">{props.name}</a>
         </div>
     );
 });

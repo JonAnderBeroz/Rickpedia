@@ -1,34 +1,54 @@
 header {
   display: flex;
-  background: white;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
   border-bottom: 10px solid var(--qwik-dark-purple);
+  padding-inline: 1.5rem;
 }
 
-header .logo a {
-  display: inline-block;
-  padding: 10px 10px 7px 20px;
+
+@media (max-width: 540px) {
+  header {
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 10px;
+  }
 }
 
-header ul {
-  margin: 0;
-  padding: 3px 10px 0 0;
-  list-style: none;
-  flex: 1;
-  text-align: right;
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-header li {
-  display: inline-block;
-  margin: 0;
-  padding: 0;
+.searchBar {
+  display: flex;
+  align-items: center;
+  border-radius: 1rem;
+  border: 1px solid #707070;
+  height: 1.7rem;
+  outline: none;
+  overflow: hidden;
 }
 
-header li a {
-  display: inline-block;
-  padding: 15px 10px;
-  text-decoration: none;
+.searchBar input {
+  border: none;
+  outline: none;
+  height: inherit;
+  padding-left: 5px;
 }
 
-header li a:hover {
-  text-decoration: underline;
+.searchBar button {
+  justify-self: end;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
 }
+
+.searchBar::placeholder {
+  color: #acacac;
+}
+
+
+

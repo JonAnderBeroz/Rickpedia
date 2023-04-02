@@ -9,11 +9,5 @@ export default component$(() => {
 });
 
 export const head: DocumentHead = {
-  title: 'Rickpedia',
-  meta: [
-    {
-      name: 'description',
-      content: 'Qwik site description',
-    },
-  ],
+  title: 'Rickpedia'
 };

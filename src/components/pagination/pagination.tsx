@@ -1,6 +1,8 @@
 import type { Signal } from "@builder.io/qwik";
 import { component$, useSignal, useStylesScoped$, $ } from "@builder.io/qwik";
 import styles from './pagination.css?inline'
+
+
 export default component$((props: { maxCharacterPages: number, currentPage:Signal<number> }) => {
     useStylesScoped$(styles)
     const pages = useSignal<number[]>([1, 2, 3, 4, 5]);
@@ -14,7 +16,7 @@ export default component$((props: { maxCharacterPages: number, currentPage:Signa
     });
 
     const previousPage = $(() => {
-        if (currentPage.value === 1) return
+        if (currentPage.value === 1) return;
         currentPage.value--;
     });
 
@@ -33,7 +35,7 @@ export default component$((props: { maxCharacterPages: number, currentPage:Signa
         }
         return (
             pages.value.map(page =>
-                <button type="button" class={{
+                <button key={page} type="button" class={{
                     page: true,
                     selected: page === currentPage.value,
                 }} onClick$={() => currentPage.value = page} >{page}</button>
@@ -51,3 +53,4 @@ export default component$((props: { maxCharacterPages: number, currentPage:Signa
         </div>
     )
 })
+

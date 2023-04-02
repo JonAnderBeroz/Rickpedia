@@ -10,7 +10,7 @@ export default component$(() => {
     useStylesScoped$(styles);
     const currentPage = useSignal(1);
     const maxCharacterPages = useSignal(1);
-    const characterResource = useResource$<characters>(async ({ track }) => {
+    const characterResource =  useResource$<characters>(async ({ track }) => {
         track(() => currentPage.value);
         const result = await fetch(`${CHARACTER_LIST_API_URL}${currentPage.value}`);
         const characters = result.json();
@@ -29,8 +29,8 @@ export default component$(() => {
                         return (
                             <>
                                 {
-                                    characters.results.map(result =>
-                                        <CharacterFrame name={result.name} image={result.image}></CharacterFrame>
+                                    characters.results.map(character =>
+                                        <CharacterFrame key={character.id} name={character.name} image={character.image}></CharacterFrame>
                                     )
                                 }
                             </>

@@ -1,3 +1,5 @@
+import { type } from "os";
+
 export type characters = {
     info: {
         count: number,
@@ -5,10 +7,12 @@ export type characters = {
         next: string,
         prev: string,
     }
-    results: [
-        {
-            name: string,
-            image: string,
-        }
-    ]
+    results: [character]
 };
+
+
+export type character  =  {
+    id: number,
+    name: string,
+    image: string,
+}
