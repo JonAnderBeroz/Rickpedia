@@ -1,5 +1,3 @@
-import { type } from "os";
-
 export type characters = {
     info: {
         count: number,
@@ -11,7 +9,7 @@ export type characters = {
 };
 
 
-export type character  =  {
+export type character = {
     id: number,
     name: string,
     image: string,

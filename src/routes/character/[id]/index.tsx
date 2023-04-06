@@ -9,10 +9,10 @@ export default component$(() => {
     useTask$(async () => {
         character.value = await characterData(+loc.params.id);
     })
-    return(
+    return (
         <>
-        <p>characterId: {loc.params.id}</p>
-        <p>{character.value?.name}</p>
+            <p>characterId: {loc.params.id}</p>
+            <p>{character.value?.name}</p>
         </>
     );
 })
