@@ -1,11 +1,13 @@
 import { component$, useStylesScoped$ } from "@builder.io/qwik";
 import styles from './characterFrame.css?inline';
-export const CharacterFrame = component$((props: { name: string, image: string }) => {
+import type { Character } from "~/types/Character";
+export const CharacterFrame = component$((props: { character: Character }) => {
     useStylesScoped$(styles);
+    const { name, image, id } = props.character
     return (
         <div class="caja">
-            <img src={props.image} />
-            <a href="/character">{props.name}</a>
+            <img src={image} />
+            <a href={'/character/' + id}>{name}</a>
         </div>
     );
 });

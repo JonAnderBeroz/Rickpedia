@@ -1,16 +1,11 @@
-export type characters = {
+import type { Character } from "./Character";
+
+export type Characters = {
     info: {
         count: number,
         pages: number,
         next: string,
         prev: string,
     }
-    results: [character]
+    results: Character[]
 };
-
-
-export type character = {
-    id: number,
-    name: string,
-    image: string,
-}

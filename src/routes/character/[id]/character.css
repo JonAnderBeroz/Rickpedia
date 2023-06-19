@@ -1,0 +1,31 @@
+.characterHeader {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  margin-bottom: 5px;
+}
+
+.characterPreview {
+  border-radius: 5%;
+  aspect-ratio: 1/1;
+  height: 200px;
+}
+
+.characterTitle {
+  font-size: 2rem;
+}
+
+.characterDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  justify-content: space-evenly;
+}
+
+.characterDetails strong svg {
+  align-self: center;
+}
+
+.characterDetails strong {
+  display: inline-flex;
+}

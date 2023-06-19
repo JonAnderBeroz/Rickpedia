@@ -1,48 +1,51 @@
 .characters {
-    background-color: var(--main-bg-color);
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(clamp(150px, 10vw, 200px), 1fr));
-    gap: 1em;
-    overflow: auto;
-    flex: 1 1 auto;
+  background-color: var(--main-bg-color);
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(clamp(150px, 10vw, 200px), 1fr)
+  );
+  gap: 1em;
+  overflow: auto;
+  margin-bottom: 1rem;
 }
 
 .pagination {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: 1em;
-    padding: 1em;
-    height: 5%;
-    align-self: center;
-    min-width: 15em;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1em;
+  padding: 1em;
+  height: 5%;
+  align-self: center;
+  min-width: 15em;
 }
 
 .pagination button {
-    padding-left: 5px;
-    padding-right: 5px;
-    height: 30px;
-    width: 30px;
-    border: none;
-    background-color: transparent;
+  padding-left: 5px;
+  padding-right: 5px;
+  height: 30px;
+  width: 30px;
+  border: none;
+  background-color: transparent;
 }
 
 .pagination .paginationAction {
-    font-size: 1rem;
+  font-size: 1rem;
 }
 
 .pagination .page {
-    transition: 0.08s ease-in;
+  transition: 0.08s ease-in;
 }
 
 .pagination .page.selected {
-    background-color: #713fc2;
-    color: white;
-    border-radius: 5px;
-    font-weight: bold;
+  background-color: #713fc2;
+  color: white;
+  border-radius: 5px;
+  font-weight: bold;
 }
 
-.pagination .page:hover:not(.selected){
-    scale:  1.05;
-    font-weight: bold;
+.pagination .page:hover:not(.selected) {
+  scale: 1.05;
+  font-weight: bold;
 }

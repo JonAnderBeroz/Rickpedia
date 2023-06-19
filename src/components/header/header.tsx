@@ -1,5 +1,5 @@
 import { component$, useStylesScoped$ } from '@builder.io/qwik';
-import { Logo } from '../icons/qwik';
+import { Logo } from '../icons/logo';
 import styles from './header.css?inline';
 
 export default component$(() => {
@@ -8,8 +8,8 @@ export default component$(() => {
   return (
     <header>
       <div class="logo">
-          <a href='/'><Logo /></a>
-          <h1>Rickpedia</h1>
+        <a href='/'><Logo /></a>
+        <h1>Rickpedia</h1>
       </div>
       <form class="searchBar">
         <input placeholder='Search...' />
