@@ -11,6 +11,7 @@ import { Unknown } from "~/components/icons/unknown";
 import { Genderless } from "~/components/icons/genderless";
 import { Female } from "~/components/icons/female";
 import { Male } from "~/components/icons/male";
+import type { Episode } from "~/types/Episode";
 
 export const status: Map<string, JSX.Element> = new Map([
     ['Alive', Alive()],
@@ -30,11 +31,16 @@ export default component$(() => {
     const loc = useLocation();
     const character = useSignal<Character>();
     const lastKnwonLocation = useSignal<Location>();
+    const origin = useSignal<Location>();
+    const firstAppearence = useSignal<Episode>();
+
     useTask$(async () => {
         character.value = await getCharacterData(+loc.params.id);
         if (!character.value) return;
         lastKnwonLocation.value = await getCharacterLocation(character.value.location.url);
-        console.log(lastKnwonLocation);
+        origin.value = await getCharacterLocation(character.value.origin.url);
+        if (character.value.episode?.length <= 0) return;
+        firstAppearence.value = await getEpisode(character.value.episode[0]);
     })
     return (
         <>
@@ -43,20 +49,23 @@ export default component$(() => {
                 <div class="characterDetails">
                     <strong class="characterTitle">{character.value?.name}</strong>
                     <strong>Status:  {character.value?.status} {status.get(character.value?.status ?? 'unknown')}</strong>
-                    <strong>Gender: {character.value?.gender} {gender.get(character.value?.gender ?? 'unknown')}</strong>
+                    <strong>Gender:  {character.value?.gender} {gender.get(character.value?.gender ?? 'unknown')}</strong>
                     <strong>Species: {character.value?.species}</strong>
                     {character.value?.type && <strong> Type: {character.value?.type}</strong>}
+                    <strong>First seen in: {firstAppearence.value?.name}</strong>
                 </div>
             </section>
             <section class="characterDetails" >
-                <strong>Species: {lastKnwonLocation.value?.name}</strong>
-                <strong>Species: {lastKnwonLocation.value?.dimension}</strong>
-                <strong>Species: {lastKnwonLocation.value?.residents.length}</strong>
-            </section>
-            <section class="characterDetails" >
-                <strong>Species: {lastKnwonLocation.value?.name}</strong>
-                <strong>Species: {lastKnwonLocation.value?.dimension}</strong>
-                <strong>Species: {lastKnwonLocation.value?.residents.length}</strong>
+                <h2>Origin: </h2>
+                <h3> {origin.value?.name ?? 'unkown'}</h3>
+                <strong>Type: {origin.value?.type ?? 'unkown'}</strong>
+                <strong>Dimension: {origin.value?.dimension ?? 'unkown'}</strong>
+                <strong>Inhabitants: {origin.value?.residents.length ?? 'unkown'}</strong>
+                <h2>Last known location: </h2>
+                <h3> {lastKnwonLocation.value?.name ?? 'unkown'}</h3>
+                <strong>Type: {lastKnwonLocation.value?.type ?? 'unkown'}</strong>
+                <strong> Dimension: {lastKnwonLocation.value?.dimension ?? 'unkown'}</strong>
+                <strong> Inhabitants: {lastKnwonLocation.value?.residents.length ?? 'unkown'}</strong>
             </section>
         </>
     );
@@ -70,6 +79,13 @@ const getCharacterData = server$(async (characterId: number) => {
 })
 
 const getCharacterLocation = server$(async (url: string) => {
+    if (!url) return;
+    const Url: URL = new URL(url);
+    const data = await fetch(Url).then(data => data.json());
+    return data;
+})
+
+const getEpisode = server$(async (url: string) => {
     const Url: URL = new URL(url);
     const data = await fetch(Url).then(data => data.json());
     return data;

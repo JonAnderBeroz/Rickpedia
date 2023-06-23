@@ -3,6 +3,7 @@
   flex-direction: row;
   gap: 1rem;
   margin-bottom: 5px;
+  flex-wrap: wrap;
 }
 
 .characterPreview {
@@ -12,7 +13,7 @@
 }
 
 .characterTitle {
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 .characterDetails {
@@ -28,4 +29,12 @@
 
 .characterDetails strong {
   display: inline-flex;
+}
+
+h3 {
+  margin: 0;
+}
+
+h2 {
+  text-decoration: underline;
 }
