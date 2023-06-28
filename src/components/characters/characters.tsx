@@ -1,7 +1,7 @@
 import { component$, Resource, useResource$, useSignal, useStylesScoped$ } from "@builder.io/qwik";
 import { CharacterFrame } from "~/components/characterFrame/characterFrame";
 import { CHARACTER_LIST_API_URL } from "~/env";
-import type { characters } from "~/types/Characters";
+import type { Characters } from "~/types/Characters";
 import Pagination from "../pagination/pagination";
 import styles from './characters.css?inline';
 
@@ -10,7 +10,7 @@ export default component$(() => {
     useStylesScoped$(styles);
     const currentPage = useSignal(1);
     const maxCharacterPages = useSignal(1);
-    const characterResource = useResource$<characters>(async ({ track }) => {
+    const characterResource = useResource$<Characters>(async ({ track }) => {
         track(() => currentPage.value);
         const result = await fetch(`${CHARACTER_LIST_API_URL}${currentPage.value}`);
         const characters = result.json();
@@ -24,7 +24,7 @@ export default component$(() => {
                     value={characterResource}
                     onPending={() => <div>Loading...</div>}
                     onRejected={() => <div>Failed to load characters</div>}
-                    onResolved={(characters) => {
+                    onResolved={(characters: Characters) => {
                         maxCharacterPages.value = characters.info.pages
                         return (
                             <>

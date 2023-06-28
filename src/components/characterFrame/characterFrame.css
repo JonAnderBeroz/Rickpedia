@@ -1,10 +1,10 @@
-.caja {
+.container {
     display: inline-flex;
     flex-direction: column;
     align-items: center;
 }
 
-.caja a {
+ a {
     color: black;
     font-weight: bold;
     font-size: 20px;
@@ -12,7 +12,7 @@
     text-align: center;
 }
 
-.caja img {
+img {
     border-radius: 25%;
     max-width: clamp(150px, 10vw, 200px);
 }

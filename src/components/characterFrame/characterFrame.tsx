@@ -5,7 +5,7 @@ export const CharacterFrame = component$((props: { character: Character }) => {
     useStylesScoped$(styles);
     const { name, image, id } = props.character
     return (
-        <div class="caja">
+        <div class="container">
             <img src={image} />
             <a href={'/character/' + id}>{name}</a>
         </div>

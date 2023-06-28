@@ -5,6 +5,8 @@ header {
   justify-content: space-between;
   border-bottom: 10px solid var(--qwik-dark-purple);
   padding-inline: 1.5rem;
+  width: 80vw;
+  background-color: white;
 }
 
 @media (max-width: 611px) {

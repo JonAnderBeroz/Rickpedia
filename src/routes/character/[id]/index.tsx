@@ -34,7 +34,8 @@ export default component$(() => {
     const origin = useSignal<Location>();
     const firstAppearence = useSignal<Episode>();
 
-    useTask$(async () => {
+    useTask$(async ({ track }) => {
+        track(() => loc.url);
         character.value = await getCharacterData(+loc.params.id);
         if (!character.value) return;
         lastKnwonLocation.value = await getCharacterLocation(character.value.location.url);
