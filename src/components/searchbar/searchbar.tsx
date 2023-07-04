@@ -14,7 +14,7 @@ const getCharactersDataByName = server$(async (characterName: string) => {
 export default component$(() => {
   useStylesScoped$(styles);
   const searchOcurrences = useSignal<Characters>();
-  const outputRef = useSignal<HTMLInputElement>();
+  const characterNameInput = useSignal<HTMLInputElement>();
   const nav = useNavigate();
 
   const go2Character = $(async () => {
@@ -25,20 +25,20 @@ export default component$(() => {
     if (!characters) return;
     nav('/character/' + characters.results[0].id);
     searchOcurrences.value = undefined
-    if(!outputRef.value) return;
-    outputRef.value.value = '';
+    if(!characterNameInput.value) return;
+    characterNameInput.value.value = '';
   })
 
   return (
     <section class='searchBarWrapper'>
       <form class="searchBar" onSubmit$={go2Character} preventdefault:submit >
-        <input ref={outputRef} type="text" name='characterName' placeholder='Rick Sanchez' onKeyDown$={
+        <input ref={characterNameInput} type="text" name='characterName' placeholder='Rick Sanchez' onKeyDown$={
           async () => {
-            if (!outputRef.value?.value) {
+            if (!characterNameInput.value?.value) {
               searchOcurrences.value = undefined;
               return;
             }
-            searchOcurrences.value = await getCharactersDataByName(outputRef.value?.value);
+            searchOcurrences.value = await getCharactersDataByName(characterNameInput.value?.value);
           }
         } autoComplete="off" />
         <button type='submit' >
@@ -65,8 +65,9 @@ export default component$(() => {
             })
           }
         </ul>
-        {searchOcurrences.value?.results.length > 4 && <a href="/searchResults" class="moreResultsButton">See more results</a>}
-      </div>}
+        {searchOcurrences.value?.results.length > 4 && <a href={`/searchResults/${characterNameInput.value?.value}`} class="moreResultsButton">See more results</a>}
+      </div>
+      }
     </section>
   )
 });

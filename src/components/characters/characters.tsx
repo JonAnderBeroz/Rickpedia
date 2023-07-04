@@ -6,13 +6,21 @@ import Pagination from "../pagination/pagination";
 import styles from './characters.css?inline';
 
 
-export default component$(() => {
+interface Props {
+    characterName?: string;
+}
+
+export default component$<Props>(({ characterName = ''}) => {
     useStylesScoped$(styles);
     const currentPage = useSignal(1);
     const maxCharacterPages = useSignal(1);
     const characterResource = useResource$<Characters>(async ({ track }) => {
         track(() => currentPage.value);
-        const result = await fetch(`${CHARACTER_LIST_API_URL}${currentPage.value}`);
+        const url: URL = new URL(`${CHARACTER_LIST_API_URL}${currentPage.value}`)
+        if(characterName){
+            url.searchParams.append('name', characterName)
+        }
+        const result = await fetch(url);
         const characters = result.json();
         return characters
     });
